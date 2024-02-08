@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>입사지원서</title>
+  <style>
+    /* 문제. CSS 작업을 수행하시오. */
+    
+    * {
+      box-sizing: border-box;
+      margin: 0 auto;
+      padding: 0;
+    }
+    .header {
+      margin-top: 10px;
+      width: 1024px;
+      height: 50px;
+      background-color: rgb(48, 196, 48);
+    }
+    
+    .header > h1 {
+      color: white;
+      font-size: 26px;
+      line-height: 50px;
+      padding-left: 7px;
+    }
+    .wrap {
+      display: flex;
+      width: 1024px;
+      height: 900px;
+    }
+    .left-wrap {
+      display: flex;
+      position: relative;
+      width: 270px;
+      height: 900px;
+      margin-top: 20px;
+      background-color: rgba(175, 175, 175, 0.5);
+    }
+    .picture {
+      background-image: url(../../assets/image/animal1.jpg);
+      width: 200px;
+      height: 220px;
+      background-repeat: no-repeat;
+      background-size: 290px 200px;
+      position: absolute;
+      top: 30px;
+      left: 30px;
+    }
+     .left-info {
+      position: absolute;
+      top: 270px;
+      margin-left: 15px;
+    }
+
+    .left-info > dl > dt {
+      font-size: 18px;
+      font-weight: 900;
+      margin-top: 20px;
+    }
+    .left-info > dl > dt::before {
+      content: '▶';
+    }
+    .left-info > dl > dd {
+      margin-top: 10px;
+      margin-left: 18px;
+    }
+    .left-info li {
+      list-style: none;
+    }
+    .right-wrap {
+      width: 730px;
+      height: 900px;
+      margin-left: 24px;
+      margin-top: 20px;
+      border: 2px solid rgba(128, 128, 128, 0.5);
+    }
+    .right-wrap > .section {
+      margin-left: 10px;
+      margin-top: 10px;
+    }
+    .right-wrap > .section > h1 {
+      color: black;
+      padding-bottom: 3px;
+    } 
+    .line {
+      width: 700px;
+      height: 20px;
+      border-top: 3px solid rgb(3, 112, 89);
+    }
+    .right-wrap > .section > dl {
+      margin-left: 20px;
+      margin-bottom: 40px;
+    }
+    .right-wrap > .section > dl > dt::before {
+      content: '◎';
+    }
+    .right-wrap > .section > dl > dd {
+      margin-left: 100px;
+      margin-bottom: 5px;
+    }
+    .right-wrap > .section > ul {
+      margin-left: 36px;
+    }
+    .right-wrap > .section > ul > li {
+      margin-bottom: 5px;
+    }
+
+
+  </style>
+</head>
+<body>
+  
+  <div class="header">
+    <h1>입사지원서</h1>
+  </div>
+
+  <div class="wrap">
+    <div class="left-wrap">
+      <div class="picture"></div>
+      <div class="left-info">
+        <dl>
+          <dt>생년월일</dt>
+          <dd>2000. 00. 00</dd>
+          <dt>이메일</dt>
+          <dd>email@email.com</dd>
+          <dt>연락처</dt>
+          <dd>010-0000-0000</dd>
+          <dt>주소</dt>
+          <dd>서울특별시 영등포구 여의도동<br>63빌딩</dd>
+          <dt>성별</dt>
+          <dd>
+            <ul>
+              <li><input type="radio" name="gender" id="man"><label for="man">남자</label></li>
+              <li><input type="radio" name="gender" id="woman"><label for="woman">여자</label></li>
+            </ul>
+          </dd>
+        </dl>
+      </div>
+    </div>
+    <div class="right-wrap">
+      <div class="section">
+        <h1>학력사항</h1>
+        <div class="line"></div>
+        <dl>
+          <dt>20.01 - 20.01</dt>
+          <dd>
+            <h4>oo 고등학교 졸업</h4>
+            <p>전공 / 소재지</p>
+          </dd>
+          <dt>20.01 - 20.01</dt>
+          <dd>
+            <h4>oo 대학교 졸업</h4>
+            <p>전공 / 학점 / 소재지</p>
+          </dd>
+        </dl>
+      </div>
+      <div class="section">
+        <h1>교육사항</h1>
+        <div class="line"></div>
+        <dl>
+          <dt>20.01 - 20.01</dt>
+          <dd>
+            <h4>oo 아카데미 수료</h4>
+            <p>과정 / 기간 / 소재지</p>
+          </dd>
+        </dl>
+      </div>
+      <div class="section">
+        <h1>경력사항</h1>
+        <div class="line"></div>
+        <dl>
+          <dt>20.01 - 20.01 (0년 0개월)</dt>
+          <dd>
+            <h4>(주) oo 솔루션</h4>
+            <p>상세업무</p>
+          </dd>
+          <dt>20.01 - 20.01 (0년 0개월)</dt>
+          <dd>
+            <h4>(주) oo 소프트</h4>
+            <p>상세업무</p>
+          </dd>
+        </dl>
+      </div>
+      <div class="section">
+        <h1>직무관련 자격증</h1>
+        <div class="line"></div>
+        <ul type="circle">
+          <li>20.01 / <strong>oo 자격증</strong> / 발급기관</li>
+          <li>20.01 / <strong>oo 자격증</strong> / 발급기관</li>
+          <li>20.01 / <strong>oo 자격증</strong> / 발급기관</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
