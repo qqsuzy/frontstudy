@@ -110,11 +110,19 @@
           함수이름([인자]);
     */
    
-    const myFunc = () => {
+    const myFunc1 = () => {
       console.log('myFunc 실행');
     }
     
-    myFunc();
+    myFunc1();
+
+    // 화살표 함수 사용 시 return 만 존재하는 경우 (위에 코드와 비교하기)
+    // 1. { } 중괄호 생략 가능하다.
+    // 2. return 키워드 생략 가능하다.
+    const myFunc2 = () => 
+       'hello world';    
+
+    console.log(myFunc2());
 
   </script>
 
