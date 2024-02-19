@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <!-- data- : 어떤 값을 태그에 저장시킬 때 사용-->
+  <div id="div1" data-name="tom" data-age="30" data-home-address="newyork">TOM</div>
+  <!-- property에 dataset 객체로 저장되며 home-address 는 camel case로 변환되어 homeAddress 로 저장된다.
+       이에 따라 꺼내서 사용할 때는 반드시 camel case로 작성해야한다. 
+       하이픈(-) 으로 구분해서 작성해야 한다. -->
+
+  <script>
+    var div1 = document.getElementById('div1');
+    console.log('data-name:', div1.dataset.name);
+    console.log('data-age:', div1.dataset.age);
+    console.log('data-home-address:', div1.dataset.homeAddress); // camel case
+  </script>
+
+  <div id="div2">JESSICA</div>
+
+  <script>
+    // 태그에 값을 저장하는 방식으로 언제든지 값을 꺼내서 서버로 보낼 수 있어야 한다.
+    var div2 = document.getElementById('div2');
+    div2.dataset.mobile = '010-1111-1111';
+    div2.dataset.dayOfBirth = '1990-01-01';
+  </script>
+</body>
+</html>

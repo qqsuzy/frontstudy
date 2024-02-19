@@ -120,7 +120,7 @@
       console.log('이벤트 타입', evt.type);
     }
 
-    // 이벤트 대상 사용하기
+    // 이벤트 대상(target) 사용하기
     document.querySelector('#div1 > button').onclick = function(evt) {
       evt.target.style.display = 'none';  // 버튼 클릭하면 버튼이 사라진다.
     }
