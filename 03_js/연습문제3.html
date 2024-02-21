@@ -67,11 +67,11 @@
     2. btn-prev 누르면 animal(숫자) 1 감소
     */
 
-   var next = 1;
-   var imgNo = 1;
+   var next = 0;
+   var imgIndex = 0;
    function nextFunc(but1) {
 
-    if(imgNo === next) {
+    if(imgIndex === 0) {
       document.getElementById('img-container').style.backgroundImage 
       = 'url(../../assets/image/animal' + imgNo + '.jpg)';
     } 

@@ -115,7 +115,7 @@
     // 이벤트 객체의 속성 확인하기
     document.querySelector('#div1 > button').onclick = function(evt) { // 이벤트 객체명은 작성해도 안해도 상관은 없다. (다만 이벤트 객체를 사용해야할 경우에는 객체명 입력해준다.)
       console.log(evt);
-      console.log('이벤트 대상', evt.target);
+      console.log('이벤트 대상', evt.target); // evt.target, this 둘 다 사용 가능
       console.log('이벤트 대상', this);
       console.log('이벤트 타입', evt.type);
     }
