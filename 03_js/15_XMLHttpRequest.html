@@ -237,7 +237,6 @@
   </style>
 
   <script>
-    // avatar 크기 150px 로 줄여서 가져오기
 
     function ex04() {
 
@@ -253,7 +252,7 @@
           return;
 
           // <div class="author">1</div>
-        resData = xhr.responseXML;
+        var resData = xhr.responseXML;
         var objects = resData.getElementsByTagName('object'); // <object> 를 배열에 저장한다.
         var result = '';
 
