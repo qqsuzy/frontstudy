@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <div id="box" class="wrap">box</div>
+  <script>
+    
+    /* 
+      실제로 jQuery를 사용할 때는 같은 대상을 사용할 때, 반복적으로 부르지 말고 변수에 저장해서 불러야 한다. (성능 저하됨)
+
+                  변수 저장 O                                          변수 저장 X
+      -------------------------------------           --------------------------------------------
+      var radio = $('#div4').find(':radio');          $('#div4').find(':radio');
+      radio.prop('type');                             $('#div4').find(':radio').radio.prop('type');
+      radio.prop('id');                               $('#div4').find(':radio').radio.prop('id');
+                                                       
+    */
+    
+
+    // jQuery 기능을 사용하기 위해 활용해야하며, 코드가 짧다고 jQuery 사용하지 않기
+    // 태그 인식 : 배열
+    var div = $('div');     // document.getElementsByTagName('div')    
+    console.log(div);
+
+    // 아이디 인식 : 객체
+    var box = $('#box');    // document.getElementById('box')           // 동일한 <div>를 뽑아내더라도 배열로 뽑아낼지 객체로 뽑아낼지 상황에 맞게 선택자 적용해야 한다.
+    console.log(box);                                                   // 배열로 뽑아내면 길이를 함께 알 수 있고, 활용할 수 있다.
+    
+    // 클래스 인식 : 배열
+    var wrap = $('.wrap');  // document.getElementsByClassName('wrap')
+    console.log(wrap);
+
+</script>
+  
+  <ul class="ott">
+    <li id="netflex">
+      <a href="javascript:void(0)">넷플릭스</a>
+    </li>
+    <li id="disneyplus">
+      <a href="javascript:void(0)">디즈니플러스</a>
+    </li>
+    <li id="tving">
+      <a id="tving-link" href="javascript:void(0)">티빙</a>
+    </li>
+    <li id="wave">
+      <a href="javascript:void(0)">웨이브</a>
+    </li>
+    <li id="coupangplay">
+      <a href="javascript:void(0)">쿠팡플레이</a>
+    </li>
+  </ul>
+  <script>
+
+    // 1. 자식
+    console.log($('.ott > li'));
+    console.log($('.ott').find('li'));
+    console.log($('.ott').children('li'));
+    console.log($('.ott').children());     // 자식 태그 꼭 넣지 않아도 된다. 
+
+    // 2. 후손
+    console.log($('.ott a'));
+    console.log($('.ott').find('a'));
+    console.log($('.ott').children('a')); // childeren 은 후손에서는 사용 불가능하다. 자식만 사용 가능하다.
+    console.log($('.ott').children('li').children('a')); 
+    console.log($('.ott').children().children()); 
+
+    // 3. 일반 형제
+    // CSS에서는 이전 형제는 알 수 없었는데, JQuery는 지원이 되어 이전 형제를 확인 할 수 있다.
+    console.log($('#tving ~ li'));           // 일반 형제들 (#tving의 다음 형제들)
+    console.log($('#tving').nextAll('li'));  // 다음 형제들 (#tving의 다음 형제들)
+    console.log($('#tving').prevAll('li'));  // 이전 형제들 (#tving의 이전 형제들)
+    console.log($('#tving').siblings('li')); // 모든 형제들 (#tving의 모든 형제들)
+
+    // 4. 인접 형제
+    console.log($('#tving + li'));       // 인접 형제 (#tving의 다음 형제)
+    console.log($('#tving').next('li')); // 다음 형제 (#tving의 다음 형제)
+    console.log($('#tving').prev('li')); // 이전 형제 (#tving의 이전 형제)
+
+    // 5. 부모와 조상
+    console.log($('#tving-link').parent('li'));  // 부모
+    console.log($('#tving-link').closest('li')); // 가장 가까운 부모 (<li> 중에서 가장 가까운 부모)
+    console.log($('#tving-link').parents());     // 모든 부모 & 조상, 태그를 지정해주면 해당 태그의 부모 및 조상만 알 수 있다.
+
+  </script>
+
+<form id="frm">
+  <div><input type="text"></div>
+  <div><input type="password"></div>
+  <div><input type="radio" name="a"><input type="radio" name="a"></div>
+  <div><input type="checkbox" name="b"><input type="checkbox" name="b"></div>
+  <div><select><option selected>A</option><option>B</option></select></div>
+</form>
+
+<script>
+  // type 속성
+  console.log($(':text')); // type이 text인 요소
+  console.log($(':password'));
+  console.log($(':radio'));
+  console.log($(':checkbox'));
+
+  // 상태 지정
+  console.log($(':focus'));             // 포커스를 가진 요소
+  console.log($(':text:focus'));        // text 중 포커스를 가진 요소
+  console.log($(':checked'));           // 체크 된 요소 (checked에 selected도 포함된다.)
+  console.log($(':radio:checked'));     // radio 중 체크된 요소
+  console.log($(':checkbox:checked'));  // checkbox 중 체크된 요소
+  console.log($(':selected'));          // 선택된 요소
+
+  // 상태 확인
+  console.log($(':text').is(':focus'));      // text가 포커스를 가지면 true (사용하려면 이벤트가 필요하다.)
+  console.log($(':radio').is(':checked'));   // radio가 체크되면 true 반환
+  console.log($('option').is(':selected'));  // option이 선택되면 true 반환
+</script>
+
+<hr>
+<div id="div1">hello world</div>
+<script>
+  // 내부 텍스트 : text()    --    (JavaScript의 textContent)
+  console.log($('#div1').text());
+  $('#div1').text('안녕하세요 반갑습니다');  // 내부 텍스트 수정 : text 내용을 지정해주면 수정이 가능하다. 
+</script>
+
+<div id="div2"><h1>hello world</h1></div>
+<script>
+
+  // 내부 요소 : html()      --    (JavaScript의 innerHTML)
+  console.log($('#div2').html());
+  $('#div2').html('<em>안녕하세요 반갑습니다</em>')
+
+</script>
+
+<div id="div3"><img src="../../assets/image/animal10.jpg" width="192px"></div>
+
+<script>
+  
+  // 태그 속성 (attribute)
+  console.log($('#div3').find('img').attr('src'));                      // attr('속성')                : 태그 속성을 확인하는 메소드 
+  $('#div3').find('img').attr('src', '../../assets/image/flower1.jpg'); // attr('속성', '변경 속성값') : 속성값 수정하기 (src 수정, 이미지 변경)
+  $('#div3').find('img').removeAttr('src');                             // removeAttr('속성')          : 속성을 삭제하는 메소드 (src 삭제)
+
+</script>
+
+<div id="div4">
+  <input type="radio" id="man" class="blind" value="M" checked="checked">
+</div>
+
+<script>
+
+  // 문서 객체 속성(property)
+  var radio = $('#div4').find(':radio');
+  console.log(radio.prop('type'));                            // prop() : 프로퍼티 값 확인
+  console.log(radio.prop('id'));
+  console.log(radio.prop('className'), radio.prop('class'));  // attribute 이름(class)으로 지정해도 JQuery가 알아서 변경 작업을 해준다.
+  console.log(radio.prop('value'),     radio.val());
+  console.log(radio.prop('checked'),   radio.is(':checked')); // is 는 상태선택자
+
+  radio.prop('type', 'checkbox');  // prop('속성', '변경 속성값') : 속성 값 수정
+  radio.removeProp('type');        // builtin property는 삭제를 금지한다. (removeProp()는 사용자 property를 삭제할 때 사용해야 한다.)
+
+</script>
+
+<div id="div5">
+  <input type="text" value="hello world">
+</div>
+
+<script>
+
+  // value 속성
+  console.log($('#div5').find(':text').val());
+  $('#div5').find(':text').val('안녕하세요 반갑습니다.');  // value 속성값 수정
+
+</script>
+
+<div id="div6" data-name="고길동" data-home-address="서울" data-zipCode="12345">고길동</div>
+<script>
+
+  // data-* 속성
+  console.log($('#div6').data('name'));
+  console.log($('#div6').data('home-address'), $('#div6').data('homeAddress')); // dash가 포함된 data 속성은 camel-cased 로 작성한다.
+  console.log($('#div6').data('zipCode'),      $('#div6').data('zipcode'));     // data 속성은 대소문자를 잘 구분해서 작성해야한다. (속성명 틀리면 확인되지 않는다.)
+  $('#div6').data('name', '홍길동');            // data('변경 속성', '변경 속성값') : 속성값 수정
+  $('#div6').data('mobile', '010-1111-2222');   // data('추가 속성', '추가 속성값') : 속성, 속성값 추가 (기존에 없던 속성을 추가할 경우)
+  console.log($('#div6').data('name'));
+  console.log($('#div6').data('mobile'))
+</script>
+
+<div id="div7">hello world</div>
+
+<script>
+
+  // style 속성
+  $('#div7').css('fontSize','32px');  // camel case 가능
+  $('#div7').css('font-weight', 900); // 원래 이름 가능
+  $('#div7').css('text-align', 'center').css('line-height', '100px'); // 1. 메소드 체이닝 : 여러 스타일을 적용할 수 있다.
+  $('#div7').css({                                                // 2. style 속성 객체화 : 여러 스타일을 적용해줄 수 있다.
+    
+    width: '200px',
+    height: '100px',
+    border: '1px solid gray',
+    backgroundColor: 'yellow'
+  
+  });
+</script>
+
+<div id="menu"></div>
+
+<script>
+
+  /*
+    추가
+    1. 마지막 자식으로 추가하기
+      1) 부모.append(자식)
+      2) 자식.appendTo(부모)
+    2. 첫 번째 자식으로 추가하기
+      1) 부모.prepend(자식)
+      2) 자식.prependTo(부모)
+    3. 다음 형제로 추가하기
+      형제.after(형제)
+    4. 이전 형제로 추가하기
+      형제.before(형제)
+  */
+
+  var menu = $('#menu');
+  menu.append('<div>피자</div>');
+  $('<div>족발<div>').appendTo(menu); // 추가하고자 하는 요소는 JQuery로 묶어주어야 한다. (묶지 않으면 JavaScript 문자열이다.)
+  menu.prepend('<div>햄버거</div>');
+  $('<div>떡볶이</div>').prependTo(menu);
+  $('#menu > div:last-of-type').after('<div>치킨</div>');
+  $('#menu > div:first-of-type').before('<div>돈까스</div>')
+  
+  /*
+    삭제
+    1. 선택 삭제
+      요소.remove()
+    2. 전체 삭제 (하위 요소를 모두 지운다.)
+      요소.empty()
+  */
+ $('#menu > div:nth-of-type(2)').remove();   // 2번째 요소 삭제
+ $('#menu').empty();                         // 전체 요소 삭제
+
+
+</script>
+
+</body>
+</html>

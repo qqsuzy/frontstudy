@@ -7,6 +7,20 @@
 </head>
 <body>
 
+  <script>
+    /*
+      data 속성(attribute)
+
+      1. HTML 구성 요소의 data-* 속성은 데이터를 저장하기 위한 속성이다.
+      2. 모든 data-* 속성은 DOM의 dataset 속성에 저장된다.
+      3. data-* 속성 확인
+           HTML               JavaScript
+        1) data-aaa=""        dataset.aaa
+        2) data-aaa-bbb=""    dataset.aaaBbb  (dash 구분자는 자동으로 camel-cased 처리된다.)
+        3) data-aaaBbb=""     dataset.aaabbb  (대문자는 소문자로 처리된다.)
+    */
+  </script>
+
   <!-- data- : 어떤 값을 태그에 저장시킬 때 사용-->
   <div id="div1" data-name="tom" data-age="30" data-home-address="newyork">TOM</div>
   <!-- property에 dataset 객체로 저장되며 home-address 는 camel case로 변환되어 homeAddress 로 저장된다.

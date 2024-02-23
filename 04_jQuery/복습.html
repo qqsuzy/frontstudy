@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+</head>
+<body>
+  
+  <ul class="ott">
+    <li id="netflex">
+      <a href="javascript:void(0)">넷플릭스</a>
+    </li>
+    <li id="disneyplus">
+      <a href="javascript:void(0)">디즈니플러스</a>
+    </li>
+    <li id="tving">
+      <a id="tving-link" href="javascript:void(0)">티빙</a>
+    </li>
+    <li id="wave">
+      <a href="javascript:void(0)">웨이브</a>
+    </li>
+    <li id="coupangplay">
+      <a href="javascript:void(0)">쿠팡플레이</a>
+    </li>
+  </ul>
+
+  <script>
+    // 1. 자식
+    console.log($('.ott > li'));
+    console.log($('.ott').children('li'));
+    console.log($('.ott').children());
+    console.log($('.ott').find('li'));
+
+    // 2. 후손
+    console.log($('.ott a'));
+    console.log($('.ott').find('a'));
+    console.log($('.ott').children('li').children('a'));
+    console.log($('.ott').children('li').children());
+    console.log($('.ott').children().children());
+
+    // 3. 형제 
+    console.log($('#tving ~ li'));
+    console.log($('#tving').prevAll('li'));
+    console.log($('#tving').prevAll());
+    console.log($('#tving').nextAll('li'));
+    console.log($('#tving').nextAll());
+    
+    // 4. 인접 형제
+    console.log($('#tving + li'));
+    console.log($('#tving').prev('li'));
+    console.log($('#tving').next('li'));
+    console.log($('#tving').next());
+
+    // 5. 부모와 조상
+    console.log($('#tving').parent('ul'));
+    console.log($('#tving').parents('ul'));
+    console.log($('#tving').closest('li'));
+    console.log($('#tiving'));
+    console.log($('#tving-link').parent());
+    console.log($('#tving-link').parents());
+
+  </script>
+
+<form id="frm">
+  <div><input type="text"></div>
+  <div><input type="password"></div>
+  <div><input type="radio" name="a"><input type="radio" name="a"></div>
+  <div><input type="checkbox" name="b"><input type="checkbox" name="b"></div>
+  <div><select><option selected>A</option><option>B</option></select></div>
+</form>
+
+<script>
+
+  // type 속성
+  console.log($(':text'));
+  console.log($(':password'));
+  console.log($(':radio'));
+  console.log($(':checkbox'));
+
+  // 상태 지정
+  console.log($(':text:focus'));
+  console.log($(':radio:checked'));
+  console.log($(':checkbox:checked'));
+  console.log($(':checked'));
+  console.log($(':selected'));
+
+  // 상태 확인
+  console.log($(':checked').is('option'));
+  console.log($(':focus').is('text'));
+  console.log($(':selected').is('option'));
+
+</script>
+
+<div id="div1">hello world</div>
+
+<script>
+
+  console.log($('#div1').text());
+  console.log($('div').text());
+  $('#div1').text('헬로 월드');
+
+</script>
+
+<div id="div2">hello world</div>
+
+<script>
+
+  console.log($('#div2').html());
+  console.log($('div').html());
+  $('#div2').html('<em>hello world</em>');
+
+</script>
+
+<div id="div3"><img src="../../assets/image/animal10.jpg" width="192px"></div>
+
+<script>
+
+var img = $('#div3').find('img');
+console.log(img.attr('src'));
+console.log(img.attr('width'));
+img.attr('src', '../../assets/image/flower2.jpg');
+img.removeAttr('width');
+img.attr('width', '192px');
+img.attr('border-radius', '50%' );
+
+</script>
+
+</body>
+</html>

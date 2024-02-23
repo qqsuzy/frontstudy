@@ -18,14 +18,26 @@
       btn1의 ON, OFF 텍스트를 교환하시오.
     */
 
-    // btn 클릭 후 다시 되돌아가기 
-    function ex01 () {
-      document.getElementById('btn1').addEventListener('click', function(){
-        document.querySelector('#div1 img').setAttribute('src', '../../assets/image/light2.png');
-        document.getElementById('btn1').textContent = 'OFF';
-      })
+    document.getElementById('btn1').onclick = function(evt) {
+      var img = document.querySelector('#div1 img');
+      if(evt.target.textContent === 'ON') {             // 이벤트 대상(evt.target) 의 내부 텍스트(textContent)가 'ON'이면
+        img.src = '../../assets/image/light2.png';
+        evt.target.textContent = 'OFF';
+      } else {
+        img.src = '../../assets/image/light1.png';
+        evt.target.textContent = 'ON';
+      }
     }
-    ex01();
+
+
+    // // btn 클릭 후 다시 되돌아가기 
+    // function ex01 () {
+    //   document.getElementById('btn1').addEventListener('click', function(){
+    //     document.querySelector('#div1 img').setAttribute('src', '../../assets/image/light2.png');
+    //     document.getElementById('btn1').textContent = 'OFF';
+    //   })
+    // }
+    // ex01();
 
   </script>
 
@@ -62,36 +74,62 @@
   </style>
   <script>
     /* animal1.jpg ~ animal10.jpg 를 이용하여 이미지 슬라이드를 만드시오. */
+    var img_no = document.getElementById('img-no');
+    var img_container = document.getElementById('img-container');
+    var btn_prev = document.getElementById('btn-prev');
+    var btn_next = document.getElementById('btn-next');
+    
     /*
     1. btn-prev 누르면 animal(숫자) 1 증가
     2. btn-prev 누르면 animal(숫자) 1 감소
     */
+    var slide_no = 1;
+   function change_img(number) {
+     slide_no += number;
+     if(slide_no > 10) slide_no = 1;
+     if(slide_no < 1) slide_no = 10;
+     img_container.style.backgroundImage = 'url(../../assets/image/animal' + slide_no + '.jpg)';
+     img_no.textContent = slide_no + ' / 10';
+      
+    //  if(number === -1) {
+    //     // imgNo--;
+    //     img_container.style.backgroundImage = 'url(../../assets/image/animal' + imgNo-- + '.jpg)';
+    //     img_no.textContent = imgNo + '/ 10';
+    //   } else if(number === 1) {
+    //     imgNo++;
+    //     img_container.style.backgroundImage = 'url(../../assets/image/animal' + imgNo + '.jpg)';
+    //   }
+    }
+    
+    btn_prev.onclick = function() { change_img(-1);} // prev 버튼을 클릭하면 change_img 함수에 파라미터값 -1을 넘긴다.
+    btn_next.onclick = function() { change_img(1);}  // prev 버튼을 클릭하면 change_img 함수에 파라미터값 1을 넘긴다.
 
-   var next = 0;
-   var imgIndex = 0;
-   function nextFunc(but1) {
 
-    if(imgIndex === 0) {
-      document.getElementById('img-container').style.backgroundImage 
-      = 'url(../../assets/image/animal' + imgNo + '.jpg)';
-    } 
+  //  var next = 0;
+  //  var imgIndex = 0;
+  //  function nextFunc(but1) {
+
+  //   if(imgIndex === 0) {
+  //     document.getElementById('img-container').style.backgroundImage 
+  //     = 'url(../../assets/image/animal' + imgNo + '.jpg)';
+  //   } 
 
 
-   }
-    function prevFunc(but2) {
+  //  }
+  //   function prevFunc(but2) {
 
       
-    }
+  //   }
 
 
-  function ex02(){
-    document.getElementById('btn-next').onclick = function(){
+  // function ex02(){
+  //   document.getElementById('btn-next').onclick = function(){
 
 
      
-    };
-  }
-  ex02();
+  //   };
+  // }
+  // ex02();
 
   </script>
 
@@ -100,11 +138,11 @@
   <div id="div3">
     <div id="original-image"></div>
     <div id="thumbnail-images">
-      <div style="background-image: url('../../assets/image/architecture1.jpg');"></div>
-      <div style="background-image: url('../../assets/image/architecture2.jpg');"></div>
-      <div style="background-image: url('../../assets/image/architecture3.jpg');"></div>
-      <div style="background-image: url('../../assets/image/architecture4.jpg');"></div>
-      <div style="background-image: url('../../assets/image/architecture5.jpg');"></div>
+      <div data-file-name="architecture1.jpg" style="background-image: url('../../assets/image/architecture1.jpg');"></div>
+      <div data-file-name="architecture2.jpg" style="background-image: url('../../assets/image/architecture2.jpg');"></div>
+      <div data-file-name="architecture3.jpg" style="background-image: url('../../assets/image/architecture3.jpg');"></div>
+      <div data-file-name="architecture4.jpg" style="background-image: url('../../assets/image/architecture4.jpg');"></div>
+      <div data-file-name="architecture5.jpg" style="background-image: url('../../assets/image/architecture5.jpg');"></div>
     </div>
   </div>
   <style>
@@ -137,7 +175,20 @@
   </style>
   <script>
     /* 5개 thumbnail 이미지에 마우스를 가져다대면 해당 이미지를 original-image로 표시하시오. */
-    
+    var original_image = document.getElementById('original-image');
+    var thumbnail_images = document.querySelectorAll('#thumbnail-images > div');
+
+    for(var i = 0; i < thumbnail_images.length; i++) {
+      thumbnail_images[i].onmouseover = function(evt) { 
+        original_image.style.backgroundImage = 'url(../../assets/image/'+ evt.target.dataset.fileName +')';
+        evt.target.style.border = '5px solid orange';
+      }
+      thumbnail_images[i].onmouseout = function(evt) {
+        evt.target.style.border = '5px solid rgba(0, 0, 0, 0)';
+
+      }
+    }
+
   </script>
 
   <hr>
