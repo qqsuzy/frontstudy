@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+</head>
+</head>
+  
+  <style>
+    #img-container{
+      width: 384px;
+      height: 256px;
+      background-image: url('../../assets/image/animal10.jpg');
+      background-size: 100%;
+    }
+  </style>
+
+  <div>
+    <button type="button" id="btn-open">OPEN</button>
+    <button type="button" id="btn-close">CLOSE</button>
+    <button type="button" id="btn-toggle">TOGGLE</button>
+  </div>
+  <div id="img-container"></div>
+  
+  <script>
+
+    /*
+      시각효과 메소드
+      문서 객체를 사라지게 하거나 나타나게 하는 메소드
+
+      1. show()    : 요소를 나타나게 한다.
+      2. hide()    : 요소를 사라지게 한다.
+      3. toggle()  : show()와 hide() 를 번갈아 실행
+      4. slideUp() : 상단을 기준으로 요소를 사라지게 한다. 
+      5. slideDown() : 상단을 기준으로 요소를 나타나게 한다.
+      6. slideToggle() : slideUp()과 slideDown()를 번갈아 실행 한다. 
+      5. fadeOut() : 서서히 숨기기
+
+      4. fadeTo()  : 서서히 숨기기
+
+    */
+
+    
+    // hide() : 숨기기 (style의 display: none; 처리하는 방식이다.(아예 사라짐))
+    // $('#btn-close').on('click', function(evt){
+    //   $('#img-container').hide(); 
+    // })
+    
+
+    /*
+    // fadeOut() : 서서히 숨기기 (opacity: 1 ~ 0; + display: none;)
+       3초 동안 일정하게 닫힌다. 3초 후 function(){}이 실행된다.
+    $('#btn-close').on('click', function(){
+      $('#img-container').fadeOut(3000, 'swing', function(){
+        alert('닫혔다.');
+      });   
+    })
+    */
+
+   /*
+    // slideUp() : 슬라이드 닫기 (everflow: hidden; + height: 0; + display: none;)
+       3초 동안 일정하게 슬라이드된다. 3초 후 function(){}이 실행된다.
+    $('#btn-close').on('click', function(evt){
+      $('#img-container').slideUp(3000, 'linear', function(){
+        alert('닫혔다.');
+      })
+    })
+    */
+    
+     /*
+    // fadeTo() : 서서히 숨기기 (opacity: 사용자 지정값;)
+       3초 동안 투명도를 0.5로 조정한다.
+    $('#btn-close').on('click', function(evt){
+      $('#img-container').fadeOut(3000, 0.5);
+    })
+    */
+    
+  </script>
+
+  <script>
+    /*
+    $('#btn-open').on('click', function(evt){
+      // $('#img-container').show(); 
+      $('#img-container').fadeIn(3000, 'swing', function(){
+        alert('열렸다.');
+       })
+    })
+    */
+
+    /*
+    $('#img-container').slideDown(3000, 'swing', function(evt){
+        alert('열렸다.');
+      })
+    */
+
+  </script>
+
+  <script>
+    $('#btn-toggle').on('click', function(evt){
+      // toggle() : show() <-> hide()
+      // $('#img-container').toggle();
+
+      // fadeToggle()
+      // $('#img-container').fadeToggle(3000, 'linear', function(){
+      //   alert('작업 완료입니다.')
+      // });
+
+      // slideToggle()
+      $('#img-container').slideToggle(3000, 'swing', function(){
+        alert('작업 완료입니다.');
+      })
+
+    })
+  </script>
+
+</body>
+</html>
