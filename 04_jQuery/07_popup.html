@@ -38,7 +38,7 @@
     */
 
     $('#btn-close').on('click', function(){
-      if($('#chk-do-not-open').is(':checked')) {
+      if($('#chk-do-not-open').is(':checked')) { // is(':checked') : 체크가 되었는지 체크한다.
         Cookies.set('do_not_open', 'true', {
           expires: 1,  // 하루 동안 유지한다.
           path: '/'    // 쿠키를 모든 경로에서 확인 가능하다.
